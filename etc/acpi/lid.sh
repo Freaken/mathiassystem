@@ -20,7 +20,6 @@ then
 	    export DISPLAY=":$displaynum"	    
         source /home/$user/.xmonad/tempenv
         export DBUS_SESSION_BUS_ADDRESS
-        echo $DBUS_SESSION_BUS_ADDRESS > /tmp/DBUS
         su $user -c "/home/$user/bin/screenlock"
 	fi
     done

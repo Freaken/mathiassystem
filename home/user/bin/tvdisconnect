@@ -1,4 +1,0 @@
-#!/bin/sh
-xrandr --output CRT1 --off
-xrandr --output DFP1 --off
-xrandr --output LCD --auto

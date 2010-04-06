@@ -18,7 +18,7 @@ for file in $files; do
         break=false
 
         while [ $break = false ]; do
-            echo -n "(R)eplace/(I)gnore/(D)iff: " 
+            echo -n "(R)eplace/(I)gnore/(D)iff/(V)imDiff: " 
             read command
 
             case $command in
@@ -30,7 +30,9 @@ for file in $files; do
                         sudo cp .`makeGenericHome $file` $file
                     fi;;
                 I) break=true;;
-                D) diff $file .`makeGenericHome $file`;;
+                D) diff $file .`makeGenericHome $file` | less;;
+                V) vimdiff $file .`makeGenericHome $file`
+                   break=true;;
             esac
         done
     fi

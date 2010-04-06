@@ -1,4 +1,4 @@
 #!/bin/sh
-if !(ssh-add -L | grep -qs "^ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAwAtYoSkU98bRa/valKxa9C6QKHcOOwDXil0LRmspmIj2pMCQ0nzjD6LZU3PaSX0x2WLwCsgB8Zgo/FPiDMVIqFS0ncgAyj+B2CPQ4+7xAsRkXlc7Aj9hF8aaYyWxngtxFv6AJqpvpfWAKwQXTuphpykq1lZBiCjZLIUA8Cg53tU= /home/freaken/.ssh/id_dsa$"); then
-  ssh-add -t 300 /home/freaken/.ssh/id_dsa
+if !(ssh-add -L | grep -qs " $HOME/.ssh/id_dsa$"); then
+  ssh-add -t 600 $HOME/.ssh/id_dsa
 fi
