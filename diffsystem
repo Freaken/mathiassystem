@@ -30,7 +30,7 @@ for file in $files; do
                         sudo cp .`makeGenericHome $file` $file
                     fi;;
                 I) break=true;;
-                D) diff .`makeGenericHome $file` $file;;
+                D) diff $file .`makeGenericHome $file`;;
             esac
         done
     fi
