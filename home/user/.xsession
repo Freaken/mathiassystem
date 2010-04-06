@@ -40,7 +40,7 @@ xmodmap ~/.xmodmap
 gnome-screensaver
 
 # Starter eduroam scriptet, så der logges på nettet
-eduroam.sh &
+wireless.sh &
 
 # Starter chats
 (skype & (sleep 10; pidgin)) &

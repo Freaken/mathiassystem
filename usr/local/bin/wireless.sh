@@ -16,7 +16,7 @@ fi
 
 # Genererer /etc/wpa_supplicant.conf ud fra de filer der ligger i
 # /etc/wpa_supplicant/conf.d
-/etc/wpa_supplicant/generate_conf.sh
+cat /etc/wpa_supplicant/conf.d/* > /etc/wpa_supplicant.conf
 
 # make sure we have a clean environment
 service network-manager stop
