@@ -12,14 +12,14 @@
 # xbindkeys (til genvejstaster)
 
 # Får japansk input til at virke
-#export GTK_IM_MODULE=ibus
-#export XMODIFIERS=@im=ibus
-#export QT_IM_MODULE=ibus
-#im-switch -s ibus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+im-switch -s ibus
 
 
 # Der køres programmer fra min bin-mappe
-export PATH="$HOME/bin:$PATH"
+export PATH="/home/freaken/bin:$PATH"
 
 # Fixer en bug i ubuntu, som gør at den første lyd der bliver spillet muter
 # systemet (gnome fixer det normalt)
@@ -27,9 +27,7 @@ soundcontroller init
 
 # Sætter min skærm op til at køre som jeg vil have. Kan fjernes, hvis man ikke
 # jævnligt tilslutter andre skærme
-#tvconnect
-
-#eval `ssh-agent`
+tvconnect
 
 # Laver headeren
 dzenheader &
@@ -41,14 +39,14 @@ xmodmap ~/.xmodmap
 # Gør så jeg kan bruge gnome screensaveren til at låse skærmen
 gnome-screensaver
 
-# Starter wireless scriptet, så der logges på nettet
+# Starter eduroam scriptet, så der logges på nettet
 wireless.sh &
 
-# Starter pidgin
-pidgin &
+# Starter chats
+(skype & (sleep 10; pidgin)) &
 
-# Starter KeePassX
-keepassx &
+# Låser skærmen, når låget er lukket og der ikke er eksterne skærme tilsluttet
+screenlocker &
 
 # Gemmer DBUS
 set | grep DBUS > ~/.xmonad/tempenv
@@ -59,4 +57,3 @@ runwindowmanagers
 # Det så ikke ud som om at dzen lukkede automatisk ved logud - så det gør den
 # nu.
 killall dzenheader dzen2
-

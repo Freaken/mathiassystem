@@ -1,3 +1,4 @@
+^/etc/wpa_supplicant/conf.d/eduroam.conf$
 ^/blacklist$
 ^/fromsystem$
 ^/packagelist$

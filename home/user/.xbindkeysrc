@@ -2,17 +2,41 @@
 "gnome-terminal"
   mod4 + shift + Return
 
+# Windowstast + shift + h
+# Åbner en terminal hjemtil
+"addmysshkey && gnome-terminal --window-with-profile=SSH-home -e 'ssh -p10101 freaken.dk'"  
+  mod4 + shift + h
+
+# Windowstast + shift + u
+# Åbner en terminal til unf serveren
+"addmysshkey && gnome-terminal --window-with-profile=SSH-unf -e 'ssh msv@ssh.unf.dk'"
+  mod4 + shift + u
+
+# Windowstast + shift + a
+# Åbner en terminal til dikus ask server
+"addmysshkey && gnome-terminal --window-with-profile=SSH-diku -e 'ssh -Y mathias@ask.diku.dk'"
+  mod4 + shift + a
+
+# Windowstast + shift + a
+# Åbner en terminal til artemis
+"addmysshkey && gnome-terminal --window-with-profile=SSH-artemis -e 'ssh -p44497 artemis.olympus.freaken.dk'"
+  mod4 + shift + l
+
 # Torrent mappe
-#"nautilus /home/`whoami`/Torrents"
-#  mod4 + shift + t
+"nautilus /home/`whoami`/Torrents"
+  mod4 + shift + t
 
 # Download mappe
-#"nautilus /home/`whoami`/Downloads"
-#   mod4 + shift + d
+"nautilus /home/`whoami`/Downloads"
+   mod4 + shift + d
 
 # Log ud af gnome (og ind i xmonad) med samme key som det gøres fra xmonad
 "gnome-session-save --logout"
   mod4 + shift + q
+
+# Logger helt ud
+"killall runwindowmanagers"
+  mod4 + alt + shift + q
 
 # Lås skærmen
 "gnome-screensaver-command -l"
@@ -34,18 +58,30 @@
 "soundcontroller toggle"
   XF86AudioMute
 
-# Skru helt ned for lyden
+# Sætter lyden til 100%
+"soundcontroller normal"
+  mod4 + XF86AudioRaiseVolume
+
+# Skruer helt ned for lyden
 "soundcontroller silence"
-  mod4 + shift + m
+  mod4 + XF86AudioLowerVolume
 
-# change sound card
+# Ændrer hvilken lydudgang der bruges
 "soundcontroller changesound"
-  mod4 + s
-
-# Lock screen and suspend computer
-"sleep.sh"
-  XF86Sleep
+  mod4 + XF86AudioMute
 
 # Start et program
 "dmenu_run -nb '#1a1a1a' -nf '#ffffff' -sb '#aecf96' -sf black -p '>'"
   mod4 + p
+
+# Google-chrome
+"google-chrome"
+  mod4 + n
+
+# Google-chrome incognito
+"google-chrome --incognito"
+  mod4 + shift + n
+
+# Genstarter dzen + indstiller skærme
+"tvconnect; sleep 0.1; restartdzenheader"
+  XF86Sleep
