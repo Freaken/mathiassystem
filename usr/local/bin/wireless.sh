@@ -26,8 +26,10 @@ cat /etc/wpa_supplicant/conf.d/* > /etc/wpa_supplicant.conf
 killall wpa_supplicant
 killall dhclient
 
-modprobe -r iwlagn
-modprobe iwlagn
+if [ `hostname` = "phobetor" ]; then
+    modprobe -r iwlagn
+    modprobe iwlagn
+fi
 
 sleep 1
 wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf -Dwext &
