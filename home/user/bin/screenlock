@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Låser skærmen, når låget lukkes og der ikke er tilsluttet eksterne skærme.
+gnome-screensaver-command -q | grep -q inactive &&
+[ `xrandr | grep -m2 " connected " | wc -l` -le 1 ] &&
+(
+    gnome-screensaver-command -l
+    sleep 2
+    xset dpms force off
+)

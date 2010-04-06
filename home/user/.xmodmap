@@ -1,0 +1,37 @@
+! Det er mest fornuftigt, at lave et dollarstegn med shift, i stedet for med alt-gr
+! Den er normalt:
+! keycode  13 = 4 currency 4 currency dollar onequarter
+keycode 13  = 4 dollar 4 dollar currency onequarter
+
+! Jeg vil gerne have et euro-tegn på min 5-tast
+keycode 14  = 5 percent 5 percent EuroSign cent
+
+! En klart mere fornuftig måde at have sin ^-tast sat op på. Hvis man blot trykker på den, så kommer ^, hvis man trykker på den med shift, kommer ~, hvis man trykker på den med alt-gr kommer der hvad umlaut-tingen (som kan kombineres med andre taster). Hvis man holder Mode_switch inde, så bliver ^ og ~ lavet om til også at kunne kombineres med andre taster som ñ og î
+keycode 35  = asciicircum asciitilde dead_circumflex dead_tilde dead_diaeresis dead_caron
+
+! Den er blot valgt, fordi den ikke gør noget. Det er Alt-modifieren, som udløser genveje i diverse programmer, ikke Alt_R
+keycode 66 = Meta_R
+
+! Jeg vil gerne have Mode_switch på caps-lock tasten
+keycode 135  = Mode_switch
+
+! Rydder modifiers
+clear Shift
+clear Lock
+clear Control
+clear Mod1
+clear Mod2
+clear Mod3
+clear Mod4
+clear Mod5
+
+! Ingen caps-lock. Resten giver sig selv.
+
+add shift   = Shift_L Shift_R
+add control = Control_L Control_R
+add mod1    = Alt_L  Meta_L
+add mod2    = Num_Lock
+add mod3    = Meta_R
+add mod4    = Super_L
+add mod5    = ISO_Level3_Shift
+

@@ -1,0 +1,146 @@
+#!/bin/sh
+
+# Program, der kan kaldes med følgende kommandoer:
+# - init
+#     for at initialisere systemet (til muted). Fixer en underlig ubuntu bug
+# - on
+#     for at unmute
+# - off
+#     for at mute
+# - toggle
+#     for at toggle, som lyden er slået til
+# - up
+#     for at skrue op for lyden
+# - down
+#     for at skrue ned for lyden
+# - builtin
+#     for at skifte til det interne lydkort
+# - hdmi
+#     for at skifte til HDMI-lyd
+# - changesound
+#     for at skifte mellem internt lydkort og HDMI
+
+isMuted() {
+    !(echo list-sinks | pacmd | grep -q "muted: no")
+}
+
+getIndexes() {
+    echo list-sinks | pacmd | grep " index: " | sed -e 's/[^0-9]//g' | xargs
+}
+
+
+mute() {
+    for index in `getIndexes`; do
+        echo set-sink-mute $index 1 | pacmd > /dev/null
+    done
+}
+
+unmute() {
+    for index in `getIndexes`; do
+        echo set-sink-mute $index 0 | pacmd > /dev/null
+    done
+}
+
+toggleMute() {
+    if isMuted; then
+        unmute
+    else
+        mute
+    fi
+}
+
+currentVolume() {
+    cat ~/.volume
+}
+
+setVolume() {
+    vol=`toDecimal $1`
+    if [ $vol -lt 0 ]; then
+        vol=0
+    fi
+
+    vol=`toHex $vol`
+
+    echo $vol > ~/.volume
+    for index in `getIndexes`; do
+        echo set-sink-volume $index $vol | pacmd > /dev/null
+    done
+}
+
+addVolume() {
+    cur=`currentVolume`
+    cur=`toDecimal $cur`
+    change=`toDecimal $1`
+    new=`expr $cur + $change`
+    setVolume $new
+}
+
+subVolume() {
+    cur=`currentVolume`
+    cur=`toDecimal $cur`
+    change=`toDecimal $1`
+    new=`expr $cur - $change `
+    setVolume $new
+}
+
+init() {
+    mute
+    setVolume 0
+}
+
+forceUpdate() {
+    toggleMute
+    toggleMute
+    setVolume `currentVolume`
+}
+
+setSink() {
+    echo set-default-sink $1 | pacmd > /dev/null
+    setVolume `currentVolume`
+    for app in `pacmd list-sink-inputs | sed -n -e 's/index:[[:space:]]\([[:digit:]]\)/\1/p'`; do
+        echo move-sink-input $app $1 | pacmd > /dev/null
+    done
+
+    for fil in ~/.pulse/*-stream-volumes.tdb; do
+        echo erase | tdbtool $fil > /dev/null
+    done
+}
+
+changeSink() {
+    sinkList=`echo list-sinks | pacmd | grep index | xargs | sed -e 's/ //g' -e 's/index://g'`
+    
+    if echo $sinkList | sed 's/\*./*/' | grep -q "*$"; then
+        setSink `echo $sinkList | sed 's/\*./*/' | head -c 1`
+    else
+        setSink `echo $sinkList | sed -e 's/^[0-9]*//' -e 's/\*//g' | head -c 2 | tail -c 1`
+    fi
+}
+
+
+if [ " $1" = " " ]; then
+    exit
+fi
+
+command=$1
+
+case $command in
+    toggle) toggleMute;;
+    init)
+        init
+        mplayer ~/.emptyAudioFile.ogg > /dev/null
+        init;;
+    on) unmute;;
+    off) mute;;
+    silence) setVolume 0;;
+    normal) setVolume 0x10000;;
+    up) addVolume 0x1000;;
+    down) subVolume 0x1000;;
+    setVolume)
+        if [ " $2" != " " ]; then
+            setVolume $2
+        fi;;
+    builtin) setSink 1;;
+    hdmi) setSink 0;;
+    changesound) changeSink;;
+    update) forceUpdate;;
+esac

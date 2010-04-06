@@ -1,0 +1,18 @@
+#!/bin/sh
+
+makeGenericHome() {
+    echo $1 | sed -e "s@^/home/$USER@/home/user@"
+}
+
+files=$(
+    find -type f | sed -e "s@^\.@@" -e "s@^/home/user@/home/$USER@" |
+    grep -v -f blacklist)
+
+
+
+dpkg --get-selections > packagelist
+
+
+for file in $files; do
+    cp -f $file .`makeGenericHome $file`
+done

@@ -1,0 +1,80 @@
+#!/bin/sh
+
+# Statusbar med lyd, batteri og dato
+
+FG='#ffffff'
+BG='#1a1a1a'
+FONT='-*-*-*-*-*-*-12-*-*-*-*-*-iso8859-*'
+
+
+START=480
+TOTALWIDTH=1366
+WIDTH=`expr $TOTALWIDTH - $START`
+
+
+fwireless() {
+    if [ -z $wirelesscachetime ]; then
+        wirelesscachetime=0
+    fi
+
+    if [ $wirelesscachetime -lt `date +%s` ]; then
+        essid=`iwconfig | grep ESSID | awk -F\" '{print $2}' | head -n1`
+        str=`iwconfig | grep "Link Quality" | cut -c24-25 | head -n1`
+        max=`iwconfig | grep "Link Quality" | cut -c27-28 | head -n1`
+        wirelesscachetime=`date -d"10 seconds" +%s`
+    fi
+    
+    wirelessbar=`echo $str | dzen2-gdbar -fg '#a8f5a3' -bg '#547a51' -max $max |  sed -e 's/^ \+[0-9]\+% \+//g'`
+
+
+}
+
+fvolume() {
+	vol=`cat ~/.volume`
+    vol=`toDecimal $vol`
+
+	
+    case `echo list-sinks | pacmd | grep "*" | sed 's/[ *a-zA-Z:]//g'` in
+    0)
+        bg='#454'
+        fgon='#a8f5a3'
+        fgoff='#547a51';;
+    1)
+        bg='#445'
+        fgon='#a8a3f5'
+        fgoff='#54517a';;
+    esac
+
+    if echo list-sinks | pacmd | grep -q "muted: no"; then
+		echo $vol | dzen2-gdbar -fg $fgon -bg $bg -max 65536
+	else
+		echo $vol | dzen2-gdbar -fg $fgoff -bg $bg -max 65536
+    fi
+	
+}
+
+fbattery() {
+	batt=`acpi | awk '{print $4}' | sed -e 's/,//' -e 's/%//'`
+    
+    on_ac_power
+    case $? in
+        0) echo "^fg(green)[$batt%]^fg(white)";;
+        *) if [ $batt -lt 20 ]; then
+               echo "^fg(red)($batt%)^fg(white)"
+           else
+               echo "^fg(yellow)($batt%)^fg(white)"
+           fi;;
+    esac
+}
+
+while true ; do
+	dt=`date +"%a %d %b %T"`
+	vol=`fvolume`
+	batt=`fbattery`
+    
+    fwireless
+
+	echo "$essid $wirelessbar   $vol $batt $dt"
+	sleep 0.3
+
+done | dzen2 -e '' -x $START -h '12' -w $WIDTH -ta r -fg $FG -bg $BG -fn $FONT

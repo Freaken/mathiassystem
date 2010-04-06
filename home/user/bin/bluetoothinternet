@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [ `whoami` != "root" ]; then
+    sudo $0 $@
+    exit 0
+fi
+
+if [ " $1" = " kill" ]; then
+    ifdown bnep0
+    pand -K
+else
+    pand --connect "$1"
+    read TEST
+    ifup bnep0
+fi
