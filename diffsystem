@@ -1,0 +1,37 @@
+#!/bin/sh
+
+makeGenericHome() {
+    echo $1 | sed -e "s@^/home/$USER@/home/user@"
+}
+
+files=$(
+    find -type f | sed -e "s@^\.@@" -e "s@^/home/user@/home/$USER@" |
+    grep -v -f blacklist)
+
+
+
+for file in $files; do
+    if ! diff .`makeGenericHome $file` $file > /dev/null; then
+        echo Difference in: $file
+        
+        command=""
+        break=false
+
+        while [ $break = false ]; do
+            echo -n "(R)eplace/(I)gnore/(D)iff: " 
+            read command
+
+            case $command in
+                R)
+                    break=true
+                    if echo $file | grep "^/home"; then
+                        cp .`makeGenericHome $file` $file
+                    else
+                        sudo cp .`makeGenericHome $file` $file
+                    fi;;
+                I) break=true;;
+                D) diff .`makeGenericHome $file` $file;;
+            esac
+        done
+    fi
+done
