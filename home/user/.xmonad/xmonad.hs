@@ -3,14 +3,13 @@ import System.Exit
 import qualified XMonad.StackSet as W 
 import qualified Data.Map as M
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Layout.Accordion
-import XMonad.Layout.NoBorders
 import XMonad.Layout
+import XMonad.Actions.CycleWS
 import System.IO
 
 statusBarCmd= "dzen2 -bg '#1a1a1a' -fg '#ffffff' -h 12 -w 480 -sa c -e '' -ta l -fn -*-*-*-*-*-*-12-*-*-*-*-*-iso10646-1" 
@@ -21,7 +20,7 @@ main = do din <- spawnPipe statusBarCmd
           xmonad $ defaultConfig
     
 	               { manageHook         = myManageHook <+> manageDocks <+> manageHook defaultConfig
-                   , layoutHook         = smartBorders (myLayout)
+                   , layoutHook         = myLayout 
                    , keys               = myKeys
 	               , workspaces         = map show [0 .. 9 :: Int] ++ ["a", "b", "c", "d"]
                    , logHook            = dynamicLogWithPP $ myPP din
@@ -37,11 +36,8 @@ myManageHook :: ManageHook
 myManageHook = composeAll
     [ className =? "Pidgin" --> doShift "d"
     , className =? "Skype" --> doShift "d"
-    , className =? "Transmission" --> doShift "c"
-    , className =? "Deluge" --> doShift "c"
-    , className =? "Quodlibet" --> doShift "b"
-    , resource =? "stalonetray" --> doIgnore
-    , isFullscreen --> doFullFloat]
+    --, className =? "Transmission" --> doShift "c"
+    , className =? "keepassx" --> doShift "b"]
 
 
 -- DropNumbers removes the number if a workspace is named, i:name -> name
@@ -82,6 +78,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask, xK_j ), windows W.focusDown)
     , ((modMask, xK_k ), windows W.focusUp)
     , ((modMask, xK_m ), windows W.focusMaster)
+	, ((modMask, xK_Return), windows W.swapMaster)
 
     -- floating layer support
     , ((modMask, xK_t ), withFocused $ windows . W.sink)
@@ -93,6 +90,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- increase or decrease number of windows in the master area
     , ((modMask , xK_comma ), sendMessage (IncMasterN 1))
     , ((modMask , xK_period), sendMessage (IncMasterN (-1)))
+
+	-- switch between current and previous workspace
+	, ((modMask .|. shiftMask , xK_w ), toggleWS )
 
     -- resizing
     , ((modMask, xK_h ), sendMessage Shrink)
