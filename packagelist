@@ -1678,12 +1678,6 @@ notify-osd-icons				install
 nspluginwrapper					install
 ntfs-3g						install
 ntpdate						install
-nvidia-173-modaliases				install
-nvidia-185-libvdpau				install
-nvidia-185-libvdpau-dev				install
-nvidia-185-modaliases				install
-nvidia-96-modaliases				install
-nvidia-common					install
 obex-data-server				install
 obexd-client					install
 ocaml						install

@@ -19,7 +19,7 @@ im-switch -s ibus
 
 
 # Der køres programmer fra min bin-mappe
-export PATH="/home/freaken/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # Fixer en bug i ubuntu, som gør at den første lyd der bliver spillet muter
 # systemet (gnome fixer det normalt)
@@ -39,7 +39,7 @@ xmodmap ~/.xmodmap
 # Gør så jeg kan bruge gnome screensaveren til at låse skærmen
 gnome-screensaver
 
-# Starter eduroam scriptet, så der logges på nettet
+# Starter wireless scriptet, så der logges på nettet
 wireless.sh &
 
 # Starter chats

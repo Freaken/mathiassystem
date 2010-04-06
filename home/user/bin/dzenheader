@@ -33,8 +33,8 @@ fvolume() {
 	vol=`cat ~/.volume`
     vol=`toDecimal $vol`
 
-	
-    case `echo list-sinks | pacmd | grep "*" | sed 's/[ *a-zA-Z:]//g'` in
+    sink=`echo list-sinks | pacmd | grep "*" | sed 's/[ *a-zA-Z:]//g'`
+    case $sink in
     0)
         bg='#454'
         fgon='#a8f5a3'
@@ -43,6 +43,10 @@ fvolume() {
         bg='#445'
         fgon='#a8a3f5'
         fgoff='#54517a';;
+	*)
+		bg='#2B275E'
+		fgon='#4B43AB'
+		fgoff='#353073';;
     esac
 
     if echo list-sinks | pacmd | grep -q "muted: no"; then
