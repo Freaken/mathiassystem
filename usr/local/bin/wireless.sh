@@ -8,8 +8,12 @@
 
 # Og skal køres som root
 if [ `whoami` != "root" ]; then
+    if [ -z " $TERM" ]; then
+        gksudo $0
+        exit 0
+    fi
+
     sudo $0
-    read TEST
     exit 0
 fi
 
@@ -19,10 +23,8 @@ fi
 cat /etc/wpa_supplicant/conf.d/* > /etc/wpa_supplicant.conf
 
 # make sure we have a clean environment
-service network-manager stop
 killall wpa_supplicant
 killall dhclient
-
 
 modprobe -r iwlagn
 modprobe iwlagn
