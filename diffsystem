@@ -28,6 +28,9 @@ for file in $files; do
                         cp .`makeGenericHome $file` $file
                     else
                         sudo cp .`makeGenericHome $file` $file
+                        if [ $file = "/var/lib/tftpboot/netboot.tar.gz" ]; then
+                            sudo tar xfv $file -C /var/lib/tftpboot
+                        fi
                     fi;;
                 I) break=true;;
                 D) diff $file .`makeGenericHome $file` | less;;

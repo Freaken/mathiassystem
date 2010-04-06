@@ -1,0 +1,60 @@
+#!/bin/sh
+
+TMP=`mktemp`
+
+printModes() {
+    awk 'BEGIN {RS="record:"} /'$1'/ {print}' $TMP | head -n-1 | tail -n+2 | awk '{print NR"\t"$0}'
+}
+
+getCurrentWidth() {
+    printModes $1 | grep "*" | awk '{print $2}' | awk -Fx '{print $1}'
+}
+
+chooseMode() {
+    echo $1
+    printModes $1
+
+    numModes=`printModes $1 | wc -l`
+
+
+    echo -n "What mode do you want: "
+    read modeNum
+
+
+    while echo $modeNum | egrep -qv "^[0-9]+$" || [ $modeNum -lt 1 -o $modeNum -gt $numModes ]; do
+        echo $1
+        printModes $1
+        echo -n "Wrong input, try again: "
+        read modeNum
+    done
+
+    MODE=`printModes $1 | head -n $modeNum | tail -n1 | awk '{print $2}'`
+
+    xrandr --output $1 --mode $MODE
+
+}
+
+
+xrandr | tail -n+2 | sed 's/\([A-Z][A-Z0-9]\+\) \(dis\)\?connected.*/record:\1 \2/g' > $TMP
+
+CURWIDTH=0
+
+for DIS in `xrandr | grep -o "^[A-Z][A-Z1-9]\+"`; do
+    if grep -q "$DIS dis" $TMP; then
+        xrandr --output $DIS --off
+    else
+
+        if [ " $1" != " " ]; then
+            chooseMode $DIS
+        else
+            xrandr --output $DIS --auto
+        fi
+
+        xrandr --output $DIS --pos "$CURWIDTH"x0
+
+        WIDTH=`getCurrentWidth $DIS`
+        CURWIDTH=`expr $CURWIDTH + $WIDTH + 2`
+    fi
+done
+
+rm -f $TMP

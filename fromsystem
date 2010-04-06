@@ -14,5 +14,6 @@ dpkg --get-selections > packagelist
 
 
 for file in $files; do
+    echo $file
     cp -f $file .`makeGenericHome $file`
 done
