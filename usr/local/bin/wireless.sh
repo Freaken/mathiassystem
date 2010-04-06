@@ -10,10 +10,9 @@
 if [ `whoami` != "root" ]; then
     if [ -z " $TERM" ]; then
         gksudo $0
-        exit 0
+    else
+        sudo $0
     fi
-
-    sudo $0
     exit 0
 fi
 
