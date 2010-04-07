@@ -29,6 +29,9 @@ soundcontroller init
 # jævnligt tilslutter andre skærme
 tvconnect
 
+# Gør så ctrl+alt+backspace dræber X
+setxkbmap -option terminate:ctrl_alt_bksp
+
 # Laver headeren
 dzenheader &
 

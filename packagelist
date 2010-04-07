@@ -1670,8 +1670,6 @@ net-tools					install
 netbase						install
 netcat						install
 netcat-traditional				install
-network-manager					install
-network-manager-gnome				install
 nmap						install
 notify-osd					install
 notify-osd-icons				install
