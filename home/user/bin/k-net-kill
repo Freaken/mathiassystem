@@ -1,0 +1,5 @@
+#!/bin/sh
+killall k-net
+killall k-login_v0.1-j.sh
+sleep 1
+killall -9 k-login_v0.1-j.sh

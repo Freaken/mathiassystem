@@ -1,0 +1,10 @@
+#!/bin/sh
+sleep 4
+for x in `seq 35`; do
+    echo KeyStr Tab
+    echo KeyStr space
+    echo KeyStrPress Shift_L
+    echo KeyStr Tab
+    echo KeyStrRelease Shift_L
+    echo KeyStr Down
+done | xmacroplay $DISPLAY

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+trap 'kill $(jobs -p)' SIGINT SIGTERM EXIT
+
+addmysshkey
+ssh artemis /home/freaken/bin/startdeluge
+ssh -NL 127.0.0.2:58846:localhost:58846 artemis &
+deluge

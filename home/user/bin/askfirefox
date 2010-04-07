@@ -1,0 +1,2 @@
+#!/bin/sh
+ssh -fY mathias@ask.diku.dk firefox
