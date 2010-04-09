@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ "$1" = "" ]; then
+	if [ "$DISPLAY" = "" ]; then
+		echo "Needs display."
+		exit 1
+	else
+		DIS=$DISPLAY
+	fi
+else
+	DIS=$1
+fi
+
+DIS=`echo $DIS | sed -e 's/^:\([0-9]*\).*/\1/'`
+
+xrandr | grep --color=never "Screen $DIS:" | sed -e 's/^.*, current \([0-9]\{1,\}\) x \([0-9]\{1,\}\).*$/\1x\2/'

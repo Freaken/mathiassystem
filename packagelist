@@ -40,6 +40,7 @@ asymptote					install
 asymptote-doc					install
 at						install
 at-spi						install
+atftp						install
 atftpd						install
 autoconf					install
 autoconf2.13					install
@@ -1974,6 +1975,7 @@ texlive-science					install
 texlive-science-doc				install
 texlive-xetex					install
 texmaker					install
+thunderbird					install
 time						install
 tipa						install
 tk8.4						install

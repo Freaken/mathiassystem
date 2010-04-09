@@ -1,0 +1,17 @@
+#!/bin/sh
+
+usage() {
+	echo "Usage: $0 outfile [display]"
+	echo 'The display parameter is required if $DISPLAY is not set'
+	exit 1
+}
+
+OUT=$1
+DIS=$2
+
+if [ "$OUT" = "" ]; then usage; fi
+if [ "$DIS" = "" ]; then DIS=$DISPLAY; fi
+if [ "$DIS" = "" ]; then usage; fi
+
+ffmpeg -an -s `getresolution $DIS` -r 30 -f x11grab -i $DIS -v 10 -sameq $OUT
+
