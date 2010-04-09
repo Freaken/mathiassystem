@@ -13,10 +13,10 @@ WIDTH=`expr $TOTALWIDTH - $START`
 
 
 fvolume() {
-	vol=`cat ~/.volume`
+    vol=`cat ~/.volume`
     vol=`toDecimal $vol`
 
-	sink=`echo list-sinks | pacmd | grep "*" | sed 's/[ *a-zA-Z:]//g'`
+    sink=`echo list-sinks | pacmd | grep "*" | sed 's/[ *a-zA-Z:]//g'`
     case $sink in
     0)
         bg='#454'
@@ -26,41 +26,41 @@ fvolume() {
         bg='#445'
         fgon='#a8a3f5'
         fgoff='#54517a';;
-	*)
-		bg='#2B275E'
-		fgon='#4B43AB'
-		fgoff='#353073';;
+    *)
+        bg='#2B275E'
+        fgon='#4B43AB'
+        fgoff='#353073';;
     esac
 
     if echo list-sinks | pacmd | grep -q "muted: no"; then
-		echo $vol | dzen2-gdbar -fg $fgon -bg $bg -max 65536
-	else
-		echo $vol | dzen2-gdbar -fg $fgoff -bg $bg -max 65536
+        echo $vol | dzen2-gdbar -fg $fgon -bg $bg -max 65536
+    else
+        echo $vol | dzen2-gdbar -fg $fgoff -bg $bg -max 65536
     fi | tee ~/dzenlog
-	
+    
 }
 
 fbattery() {
-	batt=`acpi | awk '{print $4}' | sed -e 's/,//' -e 's/%//'`
-	stat=`acpi | awk '{print $3}'`
+    batt=`acpi | awk '{print $4}' | sed -e 's/,//' -e 's/%//'`
+    stat=`acpi | awk '{print $3}'`
 
-	if [ " $stat" = " Charging," -o " $stat" = " Full," -o " $stat" = " Unknown," ]; then
-		echo "^fg(green)[$batt%]^fg(white)"
-	else
-		if [ $batt -lt 20 ]; then
-			echo "^fg(red)($batt%)^fg(white)"
-		else
-			echo "^fg(yellow)($batt%)^fg(white)"
-		fi
-	fi
+    if [ " $stat" = " Charging," -o " $stat" = " Full," -o " $stat" = " Unknown," ]; then
+        echo "^fg(green)[$batt%]^fg(white)"
+    else
+        if [ $batt -lt 20 ]; then
+            echo "^fg(red)($batt%)^fg(white)"
+        else
+            echo "^fg(yellow)($batt%)^fg(white)"
+        fi
+    fi
 }
 
 while true ; do
-	dt=`date +"%a %d %b %T"`
-	vol=`fvolume`
-	batt=`fbattery`
+    dt=`date +"%a %d %b %T"`
+    vol=`fvolume`
+    batt=`fbattery`
 
-	echo "$vol $batt $dt"
-	sleep 0.3
+    echo "$vol $batt $dt"
+    sleep 0.3
 
 done | dzen2 -e '' -x $START -h '12' -w $WIDTH -ta r -fg $FG -bg $BG -fn $FONT
