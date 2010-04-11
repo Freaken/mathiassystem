@@ -40,6 +40,7 @@ myManageHook = composeAll
     , className =? "Transmission" --> doShift "c"
     , className =? "Deluge" --> doShift "c"
     , className =? "Quodlibet" --> doShift "b"
+    , className =? "Wine" --> doFloat
     , isFullscreen --> doFullFloat]
 
 

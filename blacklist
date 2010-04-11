@@ -3,4 +3,5 @@
 ^/fromsystem$
 ^/packagelist$
 ^/diffsystem$
+^/README$
 /.git

@@ -192,6 +192,7 @@ e2fslibs					install
 e2fsprogs					install
 eagle						install
 eagle-data					install
+echoping					install
 eclipse						install
 eclipse-jdt					install
 eclipse-pde					install
@@ -679,6 +680,7 @@ libdate-calc-perl				install
 libdate-manip-perl				install
 libdatrie1					install
 libdb4.7					install
+libdbd-mysql-perl				install
 libdbi-perl					install
 libdbus-1-3					install
 libdbus-1-dev					install
@@ -806,6 +808,7 @@ libgdu-gtk0					install
 libgdu0						install
 libgegl-0.0-0					install
 libgeoip1					install
+libgetopt-mixed-perl				install
 libgfortran3					install
 libggz2						install
 libggzcore9					install
@@ -966,6 +969,7 @@ libhtml-format-perl				install
 libhtml-parser-perl				install
 libhtml-tableextract-perl			install
 libhtml-tagset-perl				install
+libhtml-template-perl				install
 libhtml-tree-perl				install
 libhttrack2					install
 libhugs-base-bundled				install
@@ -1657,7 +1661,11 @@ myspell-da					install
 myspell-en-au					install
 myspell-en-gb					install
 myspell-en-za					install
+mysql-client-5.1				install
 mysql-common					install
+mysql-server					install
+mysql-server-5.1				install
+mysql-server-core-5.1				install
 nano						install
 nasm						install
 nautilus					install
