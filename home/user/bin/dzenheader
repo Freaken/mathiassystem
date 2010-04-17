@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Statusbar med lyd, batteri og dato
+# Status bar with sound, battery and date/time
 
 FG='#ffffff'
 BG='#1a1a1a'

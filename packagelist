@@ -1073,6 +1073,7 @@ libnice0					install
 libnl1						install
 libnm-glib2					install
 libnm-util1					install
+libnotify-bin					install
 libnotify-dev					install
 libnotify0.4-cil				install
 libnotify1					install
@@ -1581,11 +1582,13 @@ openoffice.org-thesaurus-en-us			install
 openoffice.org-writer				install
 openprinting-ppds				install
 openssh-client					install
+openssh-server					install
 openssl						install
 oracle-xe-universal				install
 orbit2						install
 os-prober					install
 oss-compat					install
+p7zip-full					install
 par2						install
 parted						install
 passwd						install
@@ -1990,7 +1993,6 @@ totem-plugins					install
 traceroute					install
 transmission-common				install
 transmission-gtk				install
-truecrypt					install
 tsclient					install
 tsconf						install
 ttf-dejavu					install
@@ -2028,6 +2030,8 @@ ucf						install
 udev						install
 ufw						install
 unattended-upgrades				install
+unetbootin					install
+unetbootin-translations				install
 unixodbc					install
 uno-libs3					install
 unrar						install

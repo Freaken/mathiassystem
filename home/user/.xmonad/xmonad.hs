@@ -37,7 +37,9 @@ myManageHook = composeAll
     [ className =? "Pidgin" --> doShift "d"
     , className =? "Skype" --> doShift "d"
     --, className =? "Transmission" --> doShift "c"
-    , className =? "keepassx" --> doShift "b"]
+    , className =? "Keepassx" --> doShift "b"
+	, title     =? "VLC media player" --> doFloat
+	, title     =? "VLC (XVideo output)" --> doFloat]
 
 
 -- DropNumbers removes the number if a workspace is named, i:name -> name

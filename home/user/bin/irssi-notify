@@ -1,0 +1,3 @@
+#!/bin/sh
+ssh degeberg '> ~/.irssi/fnotify; tail -f ~/.irssi/fnotify' | while read from msg; do notify-send "[irssi] $from" "$msg" -i notification-message-im -c im.received -t 750; done
+
