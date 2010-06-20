@@ -4,22 +4,22 @@
 
 # Windowstast + shift + h
 # Åbner en terminal hjemtil
-"addmysshkey && gnome-terminal --window-with-profile=SSH-home -e 'ssh -p10101 freaken.dk'"  
+"addmysshkey && gnome-terminal -e 'ssh freaken.dk'"  
   mod4 + shift + h
 
 # Windowstast + shift + u
 # Åbner en terminal til unf serveren
-"addmysshkey && gnome-terminal --window-with-profile=SSH-unf -e 'ssh msv@ssh.unf.dk'"
+"addmysshkey && gnome-terminal -e 'ssh unf.dk'"
   mod4 + shift + u
 
 # Windowstast + shift + a
 # Åbner en terminal til dikus ask server
-"addmysshkey && gnome-terminal --window-with-profile=SSH-diku -e 'ssh -Y mathias@ask.diku.dk'"
+"addmysshkey && gnome-terminal -e 'ssh -Y ask'"
   mod4 + shift + a
 
 # Windowstast + shift + a
 # Åbner en terminal til artemis
-"addmysshkey && gnome-terminal --window-with-profile=SSH-artemis -e 'ssh -p44497 artemis.olympus.freaken.dk'"
+"addmysshkey && gnome-terminal -e 'ssh artemis'"
   mod4 + shift + l
 
 # Torrent mappe

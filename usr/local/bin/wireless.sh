@@ -22,7 +22,6 @@ fi
 cat /etc/wpa_supplicant/conf.d/* > /etc/wpa_supplicant.conf
 
 # make sure we have a clean environment
-service network-manager stop
 killall wpa_supplicant
 killall dhclient
 

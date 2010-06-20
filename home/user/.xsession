@@ -21,6 +21,9 @@ im-switch -s ibus
 # Der køres programmer fra min bin-mappe
 export PATH="$HOME/bin:$PATH"
 
+# Default browser er chrome
+export BROWSER="google-chrome"
+
 # Fixer en bug i ubuntu, som gør at den første lyd der bliver spillet muter
 # systemet (gnome fixer det normalt)
 soundcontroller init
@@ -54,8 +57,8 @@ screenlocker &
 # Gemmer DBUS
 set | grep DBUS > ~/.xmonad/tempenv
 
-# Starter xmonad/gnome
-runwindowmanagers
+# Starter xmonad
+xmonad
 
 # Det så ikke ud som om at dzen lukkede automatisk ved logud - så det gør den
 # nu.

@@ -17,14 +17,19 @@ fwireless() {
         wirelesscachetime=0
     fi
 
-    if [ $wirelesscachetime -lt `date +%s` ]; then
-        essid=`iwconfig | grep ESSID | awk -F\" '{print $2}' | head -n1`
-        str=`iwconfig | grep "Link Quality" | cut -c24-25 | head -n1`
-        max=`iwconfig | grep "Link Quality" | cut -c27-28 | head -n1`
-        wirelesscachetime=`date -d"10 seconds" +%s`
+    if iwconfig | grep ESSID | grep -q "off/any"; then
+        wirelessbar=""
+        essid=""
+    else
+        if [ $wirelesscachetime -lt `date +%s` ]; then
+            essid=`iwconfig | grep ESSID | awk -F\" '{print $2}' | head -n1`
+            str=`iwconfig | grep "Link Quality" | cut -c24-25 | head -n1`
+            max=`iwconfig | grep "Link Quality" | cut -c27-28 | head -n1`
+            wirelesscachetime=`date -d"10 seconds" +%s`
+        fi
+        
+        wirelessbar=`echo $str | dzen2-gdbar -fg '#a8f5a3' -bg '#547a51' -max $max |  sed -e 's/^ \+[0-9]\+% \+//g'`
     fi
-    
-    wirelessbar=`echo $str | dzen2-gdbar -fg '#a8f5a3' -bg '#547a51' -max $max |  sed -e 's/^ \+[0-9]\+% \+//g'`
 
 
 }

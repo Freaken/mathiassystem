@@ -85,6 +85,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- floating layer support
     , ((modMask, xK_t ), withFocused $ windows . W.sink)
+    , ((modMask, xK_b ), sendMessage ToggleStruts) -- Removes top bar
 
     -- swapping
     , ((modMask .|. shiftMask, xK_j ), windows W.swapDown )
@@ -116,6 +117,4 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
-
-
 
