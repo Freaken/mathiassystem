@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Statusbar med lyd, batteri og dato
+# Status bar with sound, battery and date/time
 
 FG='#ffffff'
 BG='#1a1a1a'
@@ -35,7 +35,7 @@ fwireless() {
 }
 
 fvolume() {
-	vol=`cat ~/.volume`
+    vol=`cat ~/.volume`
     vol=`toDecimal $vol`
 
     sink=`echo list-sinks | pacmd | grep "*" | sed 's/[ *a-zA-Z:]//g'`
@@ -48,22 +48,22 @@ fvolume() {
         bg='#445'
         fgon='#a8a3f5'
         fgoff='#54517a';;
-	*)
-		bg='#2B275E'
-		fgon='#4B43AB'
-		fgoff='#353073';;
+    *)
+        bg='#2B275E'
+        fgon='#4B43AB'
+        fgoff='#353073';;
     esac
 
     if echo list-sinks | pacmd | grep -q "muted: no"; then
-		echo $vol | dzen2-gdbar -fg $fgon -bg $bg -max 65536
-	else
-		echo $vol | dzen2-gdbar -fg $fgoff -bg $bg -max 65536
+        echo $vol | dzen2-gdbar -fg $fgon -bg $bg -max 65536
+    else
+        echo $vol | dzen2-gdbar -fg $fgoff -bg $bg -max 65536
     fi
-	
+    
 }
 
 fbattery() {
-	batt=`acpi | awk '{print $4}' | sed -e 's/,//' -e 's/%//'`
+    batt=`acpi | awk '{print $4}' | sed -e 's/,//' -e 's/%//'`
     
     on_ac_power
     case $? in
@@ -77,13 +77,13 @@ fbattery() {
 }
 
 while true ; do
-	dt=`date +"%a %d %b %T"`
-	vol=`fvolume`
-	batt=`fbattery`
+    dt=`date +"%a %d %b %T"`
+    vol=`fvolume`
+    batt=`fbattery`
     
     fwireless
 
-	echo "$essid $wirelessbar   $vol $batt $dt"
-	sleep 0.3
+    echo "$essid $wirelessbar   $vol $batt $dt"
+    sleep 0.3
 
 done | dzen2 -e '' -x $START -h '12' -w $WIDTH -ta r -fg $FG -bg $BG -fn $FONT

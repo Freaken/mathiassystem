@@ -1,4 +1,4 @@
-# For at bruge mit system skal følgende pakker være installeret:
+# The following packages need to be installed (probably others as well):
 # xmonad
 # dzen2
 # acpi
@@ -6,60 +6,55 @@
 # pavucontroller
 # pidgin
 # mplayer
-# gnome (for at kunne logge ind i gnome + lock)
 # wpa_supplicant
-# x11-xserver-utils (til xmodmap)
-# xbindkeys (til genvejstaster)
+# x11-xserver-utils (for xmodmap)
+# xbindkeys (for shortcuts)
 
-# Får japansk input til at virke
+# Japanese input
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 im-switch -s ibus
 
-
-# Der køres programmer fra min bin-mappe
+# Add ~/bin to PATH
 export PATH="$HOME/bin:$PATH"
 
 # Default browser er chrome
 export BROWSER="google-chrome"
 
-# Fixer en bug i ubuntu, som gør at den første lyd der bliver spillet muter
-# systemet (gnome fixer det normalt)
+# Turns off audio
 soundcontroller init
 
-# Sætter min skærm op til at køre som jeg vil have. Kan fjernes, hvis man ikke
-# jævnligt tilslutter andre skærme
+# Fixes screen
 tvconnect
 
-# Gør så ctrl+alt+backspace dræber X
+# Enables the ctrl+alt+backspace shortcut to kill X
 setxkbmap -option terminate:ctrl_alt_bksp
 
-# Laver headeren
+# Creates the header
 dzenheader &
 
-# Gør så at tasterne opfører sig fornuftigt. Eksempelvis fjernes caps-lock og
-# shift+4 bliver til at $-tegn.
+# Remaps some of the keys
 xmodmap ~/.xmodmap
 
-# Gør så jeg kan bruge gnome screensaveren til at låse skærmen
+# For locking the screen
 gnome-screensaver
 
-# Starter wireless scriptet, så der logges på nettet
+# Starts the wireless script
 wireless.sh &
 
-# Starter chats
+# Starts IMs
 (skype & (sleep 10; pidgin)) &
 
 # Låser skærmen, når låget er lukket og der ikke er eksterne skærme tilsluttet
 screenlocker &
 
-# Gemmer DBUS
+# Saves DBUS
 set | grep DBUS > ~/.xmonad/tempenv
 
-# Starter xmonad
+# Starts xmonad
 xmonad
 
-# Det så ikke ud som om at dzen lukkede automatisk ved logud - så det gør den
-# nu.
+# Make sure that dzen doesn't keep running after logout
 killall dzenheader dzen2
+

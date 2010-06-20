@@ -1,76 +1,45 @@
-# Windowstast + shift + enter
 "gnome-terminal"
   mod4 + shift + Return
 
-# Windowstast + shift + h
-# Åbner en terminal hjemtil
-"addmysshkey && gnome-terminal -e 'ssh freaken.dk'"  
-  mod4 + shift + h
-
-# Windowstast + shift + u
-# Åbner en terminal til unf serveren
-"addmysshkey && gnome-terminal -e 'ssh unf.dk'"
-  mod4 + shift + u
-
-# Windowstast + shift + a
-# Åbner en terminal til dikus ask server
-"addmysshkey && gnome-terminal -e 'ssh -Y ask'"
-  mod4 + shift + a
-
-# Windowstast + shift + a
-# Åbner en terminal til artemis
-"addmysshkey && gnome-terminal -e 'ssh artemis'"
-  mod4 + shift + l
-
-# Torrent mappe
 "nautilus /home/`whoami`/Torrents"
   mod4 + shift + t
 
-# Download mappe
 "nautilus /home/`whoami`/Downloads"
    mod4 + shift + d
 
-# Log ud af gnome (og ind i xmonad) med samme key som det gøres fra xmonad
-"gnome-session-save --logout"
-  mod4 + shift + q
-
-# Logger helt ud
-"killall runwindowmanagers"
-  mod4 + alt + shift + q
-
-# Lås skærmen
+# Locks the screen
 "gnome-screensaver-command -l"
   mod4 + z
 
-# Tag et screenshot og læg det i hjemmemappen
+# Takes a screenshot and saves it in the home dir
 "scrot"
   Print
 
-# Skru op for lyden
+# Turn volume up
 "soundcontroller up"
   XF86AudioRaiseVolume
 
-# Skru ned for lyden
+# Turn volume down
 "soundcontroller down"
   XF86AudioLowerVolume
 
-# Mute/unmute lyden
+# Mute/unmute volume
 "soundcontroller toggle"
   XF86AudioMute
 
-# Sætter lyden til 100%
-"soundcontroller normal"
-  mod4 + XF86AudioRaiseVolume
-
-# Skruer helt ned for lyden
+# Silence the volume
 "soundcontroller silence"
   mod4 + XF86AudioLowerVolume
 
-# Ændrer hvilken lydudgang der bruges
+# Sets volume to 100%
+"soundcontroller normal"
+  mod4 + XF86AudioRaiseVolume
+
+# change sound card
 "soundcontroller changesound"
   mod4 + XF86AudioMute
 
-# Start et program
+# opens the dmenu launcher
 "dmenu_run -nb '#1a1a1a' -nf '#ffffff' -sb '#aecf96' -sf black -p '>'"
   mod4 + p
 
