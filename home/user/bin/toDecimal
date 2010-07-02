@@ -2,5 +2,5 @@
 import sys
 try:
     print int(sys.argv[1], 0)
-except
+except:
     print 0

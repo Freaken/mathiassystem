@@ -11,6 +11,7 @@ ant						install
 ant-gcj						install
 ant-optional					install
 ant-optional-gcj				install
+anthy						install
 app-install-data				install
 apparmor					install
 apparmor-utils					install
@@ -239,6 +240,7 @@ hunspell-en-ca					install
 hunspell-en-us					install
 ia32-libs					install
 ibus						install
+ibus-anthy					install
 ibus-gtk					install
 ifupdown					install
 im-switch					install
@@ -312,6 +314,7 @@ lib32z1						install
 liba52-0.7.4					install
 libaa1						install
 libacl1						install
+libanthy0					install
 libao2						install
 libapparmor-perl				install
 libapparmor1					install
@@ -426,6 +429,8 @@ libdb-je-java					install
 libdb4.7-java					install
 libdb4.7-java-gcj				install
 libdb4.8					install
+libdbd-mysql-perl				install
+libdbi-perl					install
 libdbus-1-3					install
 libdbus-glib-1-2				install
 libdbusmenu-glib1				install
@@ -501,6 +506,7 @@ libgcj10					install
 libgconf2-4					install
 libgconf2.0-cil					install
 libgcr0						install
+libgcroots0					install
 libgcrypt11					install
 libgd2-noxpm					install
 libgdbm3					install
@@ -614,6 +620,7 @@ libhtml-format-perl				install
 libhtml-parser-perl				install
 libhtml-strip-perl				install
 libhtml-tagset-perl				install
+libhtml-template-perl				install
 libhtml-tree-perl				install
 libhunspell-1.2-0				install
 libhyphen0					install
@@ -715,6 +722,7 @@ libmpcdec3					install
 libmpeg2-4					install
 libmpfr1ldbl					install
 libmusicbrainz4c2a				install
+libmysqlclient16				install
 libnautilus-burn4				install
 libnautilus-extension1				install
 libncurses5					install
@@ -722,6 +730,7 @@ libncursesw5					install
 libndesk-dbus-glib1.0-cil			install
 libndesk-dbus1.0-cil				install
 libneon27-gnutls				install
+libnet-daemon-perl				install
 libnet1						install
 libnewt0.52					install
 libnice0					install
@@ -772,6 +781,7 @@ libperl5.10					install
 libpixman-1-0					install
 libpixman-1-dev					install
 libplist1					install
+libplrpc-perl					install
 libplymouth2					install
 libpng12-0					install
 libpng12-dev					install
@@ -792,6 +802,14 @@ libpulse0					install
 libpurple-bin					install
 libpurple0					install
 libpython2.6					install
+libqt4-dbus					install
+libqt4-designer					install
+libqt4-network					install
+libqt4-qt3support				install
+libqt4-script					install
+libqt4-sql					install
+libqt4-sql-mysql				install
+libqt4-xml					install
 libqtcore4					install
 libqtgui4					install
 libquicktime1					install
@@ -886,6 +904,8 @@ libtorrent-rasterbar5				install
 libts-0.0-0					install
 libtwolame0					install
 libudev0					install
+libuim-data					install
+libuim6						install
 libunique-1.0-0					install
 libuniversal-require-perl			install
 libupnp3					install
@@ -1057,6 +1077,12 @@ myspell-da					install
 myspell-en-au					install
 myspell-en-gb					install
 myspell-en-za					install
+mysql-client-5.1				install
+mysql-client-core-5.1				install
+mysql-common					install
+mysql-server					install
+mysql-server-5.1				install
+mysql-server-core-5.1				install
 nano						install
 nasm						install
 nautilus					install
@@ -1147,6 +1173,7 @@ python-cups					install
 python-cupshelpers				install
 python-dbus					install
 python-debian					install
+python-django					install
 python-feedparser				install
 python-gconf					install
 python-gdata					install
@@ -1168,6 +1195,7 @@ python-libxml2					install
 python-minimal					install
 python-musicbrainz				install
 python-mutagen					install
+python-mysqldb					install
 python-notify					install
 python-numpy					install
 python-oauth					install
@@ -1226,6 +1254,7 @@ sgml-base					install
 sgml-data					install
 shared-mime-info				install
 skype						install
+skype4pidgin					install
 smartdimmer					install
 smbclient					install
 software-properties-gtk				install
@@ -1250,6 +1279,7 @@ tar						install
 tasksel						install
 tasksel-data					install
 tcl-tls						install
+tcl8.4						install
 tcl8.5						install
 tcpd						install
 tcpdump						install
@@ -1407,6 +1437,14 @@ ucf						install
 udev						install
 udisks						install
 ufw						install
+uim						install
+uim-anthy					install
+uim-common					install
+uim-fep						install
+uim-gtk2.0					install
+uim-qt						install
+uim-utils					install
+uim-xim						install
 unattended-upgrades				install
 unixodbc					install
 uno-libs3					install
@@ -1425,6 +1463,8 @@ uuid-runtime					install
 vbetool						install
 vim						install
 vim-common					install
+vim-gtk						install
+vim-gui-common					install
 vim-runtime					install
 vim-tiny					install
 vlc						install
@@ -1451,6 +1491,7 @@ wireless-tools					install
 wireshark					install
 wireshark-common				install
 wodim						install
+wordplay					install
 wpasupplicant					install
 x-ttcidfont-conf				install
 x11-common					install
@@ -1469,6 +1510,7 @@ x11proto-xext-dev				install
 x11proto-xinerama-dev				install
 xauth						install
 xbindkeys					install
+xclip						install
 xdg-utils					install
 xdm						install
 xfonts-100dpi					install

@@ -15,6 +15,8 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 im-switch -s ibus
+killall ibus-daemon
+ibus-daemon &
 
 # Add ~/bin to PATH
 export PATH="$HOME/bin:$PATH"
