@@ -3,9 +3,9 @@
 # Uendelig løkke af xmonad og gnome
 # Hvis man ønsker at stoppe den, så brug killall runwindowmanagers
 
-while true; do
+#while true; do
     xmonad
-    killall xbindkeys
-    xbindkeys
-    gnome-session
-done
+#    killall xbindkeys
+#    xbindkeys
+#    gnome-session
+#done

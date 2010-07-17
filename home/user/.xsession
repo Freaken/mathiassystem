@@ -33,8 +33,12 @@ keepassx &
 # Saves DBUS
 set | grep DBUS > ~/.xmonad/tempenv
 
+# Dropbox
+dropbox.py start
+
 # Starts xmonad/gnome
-runwindowmanagers
+#runwindowmanagers
+exec xmonad
 
 # Make sure that dzen doesn't keep running after logout
 killall dzenheader dzen2

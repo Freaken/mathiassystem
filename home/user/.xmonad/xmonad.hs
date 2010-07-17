@@ -5,8 +5,10 @@ import qualified Data.Map as M
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Layout.NoBorders
 import XMonad.Layout.Accordion
 import XMonad.Layout
 import XMonad.Actions.CycleWS
@@ -20,7 +22,8 @@ main = do din <- spawnPipe statusBarCmd
           xmonad $ defaultConfig
     
 	               { manageHook         = myManageHook <+> manageDocks <+> manageHook defaultConfig
-                   , layoutHook         = myLayout 
+                   --, layoutHook         = smartBorders(myLayout)
+                   , layoutHook         = myLayout
                    , keys               = myKeys
 	               , workspaces         = map show [0 .. 9 :: Int] ++ ["a", "b", "c", "d"]
                    , logHook            = dynamicLogWithPP $ myPP din
@@ -34,7 +37,8 @@ main = do din <- spawnPipe statusBarCmd
 -- ManageHooks
 myManageHook :: ManageHook
 myManageHook = composeAll
-    [ className =? "Pidgin" --> doShift "d"
+    [ isFullscreen --> doFullFloat
+    , className =? "Pidgin" --> doShift "d"
     , className =? "Skype" --> doShift "d"
     --, className =? "Transmission" --> doShift "c"
     , className =? "Keepassx" --> doShift "b"
