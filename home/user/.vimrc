@@ -16,3 +16,6 @@ nnoremap <C-y> :%y +<CR>
 vnoremap <C-y> "+y
 nnoremap <C-p> o<Esc>"+p
 inoremap <C-p> ☃<Esc>x"+pa
+
+autocmd FileType html set shiftwidth=2
+autocmd FileType html set tabstop=2

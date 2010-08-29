@@ -44,10 +44,10 @@ for DIS in `xrandr | grep -o "^[A-Z][A-Z1-9]\+"`; do
         xrandr --output $DIS --off
     else
 
-        if [ " $1" != " " ]; then
-            chooseMode $DIS
-        else
+        if [ " $1" = " " ]; then
             xrandr --output $DIS --auto
+        else
+            chooseMode $DIS
         fi
 
         xrandr --output $DIS --pos "$CURWIDTH"x0

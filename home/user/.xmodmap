@@ -11,6 +11,7 @@ keycode 35  = asciicircum asciitilde dead_circumflex dead_tilde dead_diaeresis d
 
 ! Den er blot valgt, fordi den ikke gør noget. Det er Alt-modifieren, som udløser genveje i diverse programmer, ikke Alt_R
 keycode 66 = Meta_R
+! keycode 66 = Caps_Lock
 
 ! Jeg vil gerne have Mode_switch på caps-lock tasten
 keycode 135  = Mode_switch
