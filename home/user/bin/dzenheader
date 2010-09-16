@@ -41,7 +41,6 @@ aptupdates() {
     fi
 
 
-
     if [ $aptcachetime -lt `date +%s` ]; then
         aptcachetime=`date -d"10 seconds" +%s`
         
@@ -54,6 +53,8 @@ aptupdates() {
             apt="^fg(#ff0000)[[!]]^fg(white)"
         elif [ " $normal" != " 0" ]; then
             apt="^fg(orange)[[!]]^fg(white)"
+        else
+            apt=""
         fi
     fi
 }
