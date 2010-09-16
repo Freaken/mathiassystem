@@ -35,13 +35,25 @@ fwireless() {
 }
 
 aptupdates() {
+
     if [ -z $aptcachetime ]; then
         aptcachetime=0
     fi
 
+
+
     if [ $aptcachetime -lt `date +%s` ]; then
-        if [ `/usr/lib/update-notifier/apt-check 2>&1 | sed 's@;@@' ` != "00" ]; then
-            echo "^fg(orange)[[!]]^fg(white)"
+        aptcachetime=`date -d"10 seconds" +%s`
+        
+        aptstatus=`/usr/lib/update-notifier/apt-check 2>&1`
+
+        normal=`echo $aptstatus | awk -F\; '{print $1}'`
+        security=`echo $aptstatus | awk -F\; '{print $2}'`
+
+        if [ " $security" != " 0" ]; then
+            apt="^fg(#ff0000)[[!]]^fg(white)"
+        elif [ " $normal" != " 0" ]; then
+            apt="^fg(orange)[[!]]^fg(white)"
         fi
     fi
 }
@@ -92,8 +104,8 @@ while true ; do
     dt=`date +"%a %d %b %T"`
     vol=`fvolume`
     batt=`fbattery`
-    apt=`aptupdates`
     
+    aptupdates
     fwireless
 
     echo "$apt   $essid $wirelessbar   $vol $batt $dt"
