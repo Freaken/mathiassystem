@@ -19,6 +19,7 @@ apport						install
 apport-hooks-medibuntu				install
 apport-symptoms					install
 apt						install
+apt-show-versions				install
 apt-transport-https				install
 apt-utils					install
 apt-xapian-index				install
@@ -130,6 +131,11 @@ eclipse-rcp					install
 ecryptfs-utils					install
 ed						install
 eject						install
+emacs						install
+emacs23						install
+emacs23-bin-common				install
+emacs23-common					install
+emacsen-common					install
 esound-clients					install
 esound-common					install
 ethtool						install
@@ -328,6 +334,7 @@ libapparmor1					install
 libappindicator0				install
 libapr1						install
 libaprutil1					install
+libapt-pkg-perl					install
 libarchive1					install
 libart-2.0-2					install
 libart2.0-cil					install
@@ -696,6 +703,7 @@ liblucene2-java					install
 liblwres60					install
 liblzma1					install
 liblzo2-2					install
+libm17n-0					install
 libmad0						install
 libmagic1					install
 libmagickcore2					install
@@ -768,6 +776,7 @@ libopenjpeg2					install
 libopenobex1					install
 liborbit2					install
 liborc-0.4-0					install
+libotf0						install
 libpam-ck-connector				install
 libpam-gnome-keyring				install
 libpam-modules					install
@@ -1064,6 +1073,8 @@ lsof						install
 ltrace						install
 luatex						install
 lzma						install
+m17n-contrib					install
+m17n-db						install
 make						install
 makedev						install
 man-db						install
@@ -1143,6 +1154,7 @@ openssh-client					install
 openssh-server					install
 openssl						install
 os-prober					install
+par						install
 parted						install
 passwd						install
 patch						install
@@ -1255,6 +1267,9 @@ python-xkit					install
 python-zope.interface				install
 python2.6					install
 python2.6-minimal				install
+python3-minimal					install
+python3.1					install
+python3.1-minimal				install
 quodlibet					install
 quodlibet-ext					install
 quodlibet-plugins				install
@@ -1301,6 +1316,7 @@ sun-java6-jre					install
 sun-java6-plugin				install
 swath						install
 synaptic					install
+syslinux					install
 system-config-printer-common			install
 system-config-printer-gnome			install
 system-config-printer-udev			install
@@ -1489,6 +1505,9 @@ upower						install
 upstart						install
 ure						install
 ureadahead					install
+usb-creator					install
+usb-creator-common				install
+usb-creator-gtk					install
 usbmuxd						install
 usbutils					install
 util-linux					install
