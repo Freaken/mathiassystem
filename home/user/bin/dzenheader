@@ -34,6 +34,18 @@ fwireless() {
 
 }
 
+aptupdates() {
+    if [ -z $aptcachetime ]; then
+        aptcachetime=0
+    fi
+
+    if [ $aptcachetime -lt `date +%s` ]; then
+        if [ `/usr/lib/update-notifier/apt-check 2>&1 | sed 's@;@@' ` != "00" ]; then
+            echo "^fg(orange)[[!]]^fg(white)"
+        fi
+    fi
+}
+
 fvolume() {
     vol=`cat ~/.volume`
     vol=`toDecimal $vol`
@@ -80,10 +92,11 @@ while true ; do
     dt=`date +"%a %d %b %T"`
     vol=`fvolume`
     batt=`fbattery`
+    apt=`aptupdates`
     
     fwireless
 
-    echo "$essid $wirelessbar   $vol $batt $dt"
+    echo "$apt   $essid $wirelessbar   $vol $batt $dt"
     sleep 0.3
 
 done | dzen2 -e '' -x $START -h '12' -w $WIDTH -ta r -fg $FG -bg $BG -fn $FONT
