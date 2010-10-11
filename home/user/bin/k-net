@@ -1,5 +1,0 @@
-#! /bin/sh
-while true; do
-  ~/bin/k-login_v0.1-j.sh pokpok109 fw2.k-net.dk < ~/signaturer/k-net
-  ~/bin/k-login_v0.1-j.sh pokpok109 fw1.k-net.dk < ~/signaturer/k-net
-done
