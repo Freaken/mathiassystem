@@ -109,10 +109,10 @@ setSink() {
 changeSink() {
     sinkList=`echo list-sinks | pacmd | grep index | xargs | sed -e 's/ //g' -e 's/index://g'`
     
-    if echo $sinkList | sed 's/\*./*/' | grep -q "*$"; then
-        setSink `echo $sinkList | sed 's/\*./*/' | head -c 1`
+    if echo "$sinkList" | sed 's/\*./*/' | grep -q "*$"; then
+        setSink `echo "$sinkList" | sed 's/\*./*/' | head -c 1`
     else
-        setSink `echo $sinkList | sed -e 's/^[0-9]*//' -e 's/\*//g' | head -c 2 | tail -c 1`
+        setSink `echo "$sinkList" | sed -e 's/^[0-9]*//' -e 's/\*//g' | head -c 2 | tail -c 1`
     fi
 }
 
