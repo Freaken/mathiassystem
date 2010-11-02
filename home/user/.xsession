@@ -21,6 +21,9 @@ ibus-daemon &
 # Add ~/bin to PATH
 export PATH="$HOME/bin:$PATH"
 
+# Starting ssh-agent
+eval `ssh-agent -t 300`
+
 # Default browser er chrome
 export BROWSER="google-chrome"
 
