@@ -14,14 +14,14 @@ grep -q closed /proc/acpi/button/lid/*/state
 if [ $? = 0 ]
 then
     for x in /tmp/.X11-unix/*; do
-	displaynum=`echo $x | sed s#/tmp/.X11-unix/X##`
-	getXuser;
-	if [ x"$XAUTHORITY" != x"" ]; then
-	    export DISPLAY=":$displaynum"	    
-        source /home/$user/.xmonad/tempenv
-        export DBUS_SESSION_BUS_ADDRESS
-        su $user -c "/home/$user/bin/screenlock"
-	fi
+        displaynum=`echo $x | sed s#/tmp/.X11-unix/X##`
+        getXuser;
+        if [ x"$XAUTHORITY" != x"" ]; then
+            export DISPLAY=":$displaynum"
+            source /home/$user/.xmonad/tempenv
+            export DBUS_SESSION_BUS_ADDRESS
+            su $user -c "/home/$user/bin/screenlock"
+        fi
     done
 fi
 
