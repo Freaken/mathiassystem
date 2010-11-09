@@ -54,3 +54,8 @@
 # Genstarter dzen + indstiller skærme
 "tvconnect; sleep 0.1; restartdzenheader"
   XF86Sleep
+
+# Toggles the wireless card
+"wireless.sh"
+  XF86WLAN
+

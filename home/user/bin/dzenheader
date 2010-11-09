@@ -17,7 +17,7 @@ fwireless() {
         wirelesscachetime=0
     fi
 
-    if iwconfig | grep ESSID | egrep -q -e "off/any" -e "\\x[0-9A-F]{2}"; then
+    if !(iwconfig | grep -q wlan0) || iwconfig | grep ESSID | egrep -q -e "off/any" -e "\\x[0-9A-F]{2}"; then
         wirelessbar=""
         essid=""
     else
