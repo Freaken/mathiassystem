@@ -119,6 +119,7 @@ docbook-xml					install
 dosfstools					install
 dpkg						install
 dpkg-dev					install
+dvb-apps					install
 dvd+rw-tools					install
 dvipng						install
 dwm-tools					install
@@ -200,7 +201,6 @@ gimp-gmic					install
 gimp-plugin-registry				install
 gir1.0-glib-2.0					install
 git						install
-git-core					install
 gksu						install
 global						install
 gnome-doc-utils					install
@@ -221,8 +221,9 @@ gpgv						install
 graphviz					install
 grep						install
 groff-base					install
-grub						install
 grub-common					install
+grub-pc						install
+grub2						install
 gsfonts						install
 gsfonts-x11					install
 gstreamer0.10-alsa				install
@@ -950,6 +951,7 @@ libxcursor1					install
 libxdamage1					install
 libxdmcp-dev					install
 libxdmcp6					install
+libxdo2						install
 libxdot4					install
 libxerces2-java					install
 libxext-dev					install
@@ -996,19 +998,9 @@ lilypond-doc					install
 linux-firmware					install
 linux-firmware-nonfree				install
 linux-generic					install
-linux-headers-2.6.32-19				install
-linux-headers-2.6.32-19-generic			install
-linux-headers-2.6.32-21				install
-linux-headers-2.6.32-21-generic			install
-linux-headers-2.6.32-24				install
-linux-headers-2.6.32-24-generic			install
-linux-headers-2.6.32-25				install
-linux-headers-2.6.32-25-generic			install
 linux-headers-2.6.35-22				install
 linux-headers-2.6.35-22-generic			install
 linux-headers-generic				install
-linux-image-2.6.32-24-generic			install
-linux-image-2.6.32-25-generic			install
 linux-image-2.6.35-22-generic			install
 linux-image-generic				install
 linux-libc-dev					install
@@ -1449,6 +1441,7 @@ vlc-data					install
 vlc-nox						install
 vlc-plugin-notify				install
 vlc-plugin-pulse				install
+w-scan						install
 w3m						install
 w64codecs					install
 wdanish						install
@@ -1484,6 +1477,7 @@ xbindkeys					install
 xclip						install
 xdg-utils					install
 xdm						install
+xdotool						install
 xfonts-100dpi					install
 xfonts-75dpi					install
 xfonts-base					install
