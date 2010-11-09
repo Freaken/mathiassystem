@@ -44,23 +44,15 @@ myManageHook = composeAll
     , isFullscreen --> doFullFloat]
 
 
--- DropNumbers removes the number if a workspace is named, i:name -> name
-dropNumbers wsId =  if (':' `elem` wsId) 
-                    then drop 2 wsId
-			        else wsId
-
 -- Layouts
 myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
     tiled = Tall 1 (3/100) (1/2)
-    nmaster = 1
-    ratio   = 1/2
-    delta   = 3/100
 
 -- Pretty print for dzen
 myPP h = defaultPP
-                 { ppCurrent = dzenColor "black" "#aecf96" . dropNumbers
-				 , ppHidden  = dzenColor "" "" . dropNumbers
+                 { ppCurrent = dzenColor "black" "#aecf96"
+				 , ppHidden  = dzenColor "" ""
 				 , ppSep     = " ^r(3x3) "
 				 -- Replace layout name with an icon:
 			 	 , ppTitle   = dzenColor "aecf96" ""
