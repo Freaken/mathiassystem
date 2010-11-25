@@ -17,14 +17,14 @@ keycode 66 = Meta_R
 keycode 135  = Mode_switch
 
 ! Rydder modifiers
-clear Shift
-clear Lock
-clear Control
-clear Mod1
-clear Mod2
-clear Mod3
-clear Mod4
-clear Mod5
+clear shift
+clear lock
+clear control
+clear mod1
+clear mod2
+clear mod3
+clear mod4
+clear mod5
 
 ! Ingen caps-lock. Resten giver sig selv.
 
