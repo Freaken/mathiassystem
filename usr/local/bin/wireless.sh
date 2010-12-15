@@ -47,6 +47,7 @@ start_wireless() {
 
 # Generates combined config file for wpa_supplicant
 cat /etc/wpa_supplicant/conf.d/* > /etc/wpa_supplicant.conf
+chmod og-rwx /etc/wpa_supplicant.conf
 
 
 if [ " $1" = " off" ]; then
