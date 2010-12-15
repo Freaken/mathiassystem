@@ -34,6 +34,7 @@ call TabWidth(4)
 
 " Men ikke i html og php-filer
 autocmd FileType html call TabWidth(2)
+autocmd FileType xhtml call TabWidth(2)
 autocmd FileType php call TabWidth(2)
 
 " I TeX skal linjerne ikke være mere end 80 tegn
