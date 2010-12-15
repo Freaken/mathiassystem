@@ -101,15 +101,26 @@ fbattery() {
     esac
 }
 
+get_keyboard() {
+
+    case `kblayout get` in
+        dk)
+            echo -n "^bg(darkred) ^bg()";;
+        colemak)
+            echo -n "^bg(darkblue) ^bg()";;
+    esac
+}
+
 while true ; do
     dt=`date +"%a %d %b %T"`
     vol=`fvolume`
     batt=`fbattery`
+    keyboard=`get_keyboard`
     
     aptupdates
     fwireless
 
-    echo "$apt   $essid $wirelessbar   $vol $batt $dt"
+    echo "$apt   $essid $wirelessbar  $vol $batt $dt$keyboard"
     sleep 0.3
 
 done | dzen2 -e '' -x $START -h '12' -w $WIDTH -ta r -fg $FG -bg $BG -fn $FONT

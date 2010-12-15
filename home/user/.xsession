@@ -40,7 +40,8 @@ setxkbmap -option terminate:ctrl_alt_bksp
 dzenheader &
 
 # Remaps some of the keys
-xmodmap ~/.xmodmap
+#xmodmap ~/.xmodmap
+kblayout dk
 
 # For locking the screen
 gnome-screensaver
