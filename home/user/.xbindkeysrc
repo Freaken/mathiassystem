@@ -59,10 +59,18 @@
 "wireless.sh"
   XF86WLAN
 
-# Power button, should poweroff
-"sudo poweroff"
+ Power button, should poweroff
+"screensaver-command -l; sudo poweroff"
   c:250
 
 # Mod+power button, should go to sleep
-"sudo /etc/acpi/sleep.sh"
+"gnome-screensaver-command -l; sudo /etc/acpi/sleep.sh"
   mod4 + c:250
+
+## Mod+shift+power button, should hibernate
+#"gnome-screensaver-command -l; sudo /etc/acpi/hibernate.sh"
+#  mod4 + shift + c:250
+
+# Changes keyboard layout on Mod+escape
+"kblayout"
+  mod4 + Escape
