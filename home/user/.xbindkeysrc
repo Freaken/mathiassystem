@@ -40,8 +40,8 @@
   mod4 + XF86AudioMute
 
 # opens the dmenu launcher
-"dmenu_run -nb '#1a1a1a' -nf '#ffffff' -sb '#aecf96' -sf black -p '>'"
-  mod4 + p
+# "dmenu_run -nb '#1a1a1a' -nf '#ffffff' -sb '#aecf96' -sf black -p '>'"
+#  mod4 + p
 
 # Google-chrome
 "google-chrome"
@@ -51,8 +51,8 @@
 "google-chrome --incognito"
   mod4 + shift + n
 
-# Genstarter dzen + indstiller skærme
-"tvconnect; sleep 0.1; restartdzenheader"
+# Indstiller skærme
+"tvconnect"
   XF86Sleep
 
 # Toggles the wireless card

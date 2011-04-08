@@ -30,7 +30,7 @@ chooseMode() {
 
     MODE=`printModes $1 | head -n $modeNum | tail -n1 | awk '{print $2}'`
 
-    xrandr --output $1 --mode $MODE
+    xrandr --output $1 --mode $MODE --reflect normal --rotate normal
 
 }
 
@@ -50,7 +50,7 @@ for DIS in `xrandr | grep -o "^[A-Z][A-Z1-9]\+"`; do
             chooseMode $DIS
         fi
 
-        xrandr --output $DIS --pos "$CURWIDTH"x0
+        xrandr --output $DIS --pos "$CURWIDTH"x0 --reflection normal --rotate normal
 
         WIDTH=`getCurrentWidth $DIS`
         CURWIDTH=`expr $CURWIDTH + $WIDTH + 2`

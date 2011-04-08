@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# Genstarter dzen bar'en
-
-killall dzenheader
-kill `ps aux | grep "dzen2 -e" | grep iso | awk '{print $2}' | xargs`
-dzenheader &
-

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case `kblayout get` in
+    dk)
+        echo "<fc=,darkred> </fc>";;
+    colemak)
+        echo "<fc=,darkblue> </fc>";;
+esac
+

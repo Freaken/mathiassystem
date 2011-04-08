@@ -1,0 +1,17 @@
+Config { font = "-*-*-*-*-*-*-12-*-*-*-*-*-iso8859-*"
+       , bgColor = "#1a1a1a"
+       , fgColor = "#ffffff"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ Run StdinReader
+                    , Run Com "date" ["+%a\\\\ %d\\\\ %b\\\\ %T"] "" 1
+                    , Run Com "~/bin/xmobar/wireless_status" [] "wireless" 10
+                    , Run Com "~/bin/xmobar/battery_status" [] "battery" 5 
+                    , Run Com "~/bin/xmobar/volume_status" [] "volume" 1 
+                    , Run Com "~/bin/xmobar/keyboard_status" [] "keyboard" 1 
+                    , Run Com "~/bin/xmobar/apt_status" [] "apt" 120 ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %apt% %wireless% | %battery% | %volume% | %date% | %keyboard%"
+       }
+

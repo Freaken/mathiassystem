@@ -28,7 +28,7 @@ kill_wireless() {
         service network-manager stop
     fi
 
-    killall wpa_supplicant dhclient dhclient3 2>/dev/null
+    killall wpa_supplicant 2>/dev/null
 
     # the iwlagn driver sometimes becomes corrupted - reload it to be safe
     if [ `state` = "on" ]; then
@@ -46,7 +46,7 @@ start_wireless() {
 }
 
 # Generates combined config file for wpa_supplicant
-cat /etc/wpa_supplicant/conf.d/* > /etc/wpa_supplicant.conf
+cat /etc/wpa_supplicant/conf.d/*.conf > /etc/wpa_supplicant.conf
 chmod og-rwx /etc/wpa_supplicant.conf
 
 

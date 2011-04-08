@@ -1,6 +1,5 @@
 # The following packages need to be installed (probably others as well):
 # xmonad
-# dzen2
 # acpi
 # alsa-utils
 # pavucontroller
@@ -36,9 +35,6 @@ tvconnect
 # Enables the ctrl+alt+backspace shortcut to kill X
 setxkbmap -option terminate:ctrl_alt_bksp
 
-# Creates the header
-dzenheader &
-
 # Remaps some of the keys
 #xmodmap ~/.xmodmap
 kblayout dk
@@ -60,7 +56,4 @@ set | grep DBUS > ~/.xmonad/tempenv
 
 # Starts xmonad
 xmonad
-
-# Make sure that dzen doesn't keep running after logout
-killall dzenheader dzen2
 

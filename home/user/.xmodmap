@@ -7,8 +7,9 @@ keycode 13  = 4 dollar currency dollar cent sterling
 keycode 14  = 5 percent 5 percent EuroSign yen
 
 ! Backspace i stedet for Caps Lock
-keycode 66 = BackSpace
+! keycode 66 = BackSpace
 ! keycode 66 = Caps_Lock
+keycode 66 = Hyper_L
 
 ! Jeg vil gerne have Mode_switch på menu tasten
 keycode 135  = Mode_switch

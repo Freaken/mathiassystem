@@ -1,0 +1,18 @@
+#!/bin/sh
+
+batt=`acpi | awk '{print $4}' | sed -e 's/,//' -e 's/%//'`
+
+while [ `expr length "$batt"` -lt 3 ]; do
+  batt=" $batt"
+done
+
+on_ac_power
+case $? in
+    0) echo "<fc=green>[$batt%]</fc>";;
+    *) if [ $batt -lt 20 ]; then
+           echo "<fc=red>($batt%)</fc>"
+       else
+           echo "<fc=yellow>($batt%)</fc>"
+       fi;;
+esac
+

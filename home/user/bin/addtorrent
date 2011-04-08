@@ -1,10 +1,10 @@
 #!/bin/sh
-if [ -z $1 ] || ! [ -f $1 ]; then
-    echo $1 is not a file
+if [ -z "$*" ] || ! [ -f "$*" ]; then
+    echo $* is not a file
     exit 0
 fi
     
-addmysshkey &&
-#ssh artemis.olympus.freaken.dk "cd /home/samba/Torrentfiles; wget \"$1\""
-scp $1 artemis:/home/samba/Torrentfiles &&
-rm -f $1
+gnome-terminal --disable-factory -e "addmysshkey" &&
+scp "$*" hades:/home/transmission/Torrents &&
+rm -f "$*"
+

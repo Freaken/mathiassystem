@@ -1,0 +1,40 @@
+#!/bin/sh
+
+vol=`cat ~/.volume`
+vol=`toDecimal $vol`
+
+sink=`echo list-sinks | pacmd | grep "*" | sed 's/[ *a-zA-Z:]//g'`
+case $sink in
+0)
+    bg='#454'
+    fgon='#a8f5a3'
+    fgoff='#547a51';;
+1)
+    bg='#445'
+    fgon='#a8a3f5'
+    fgoff='#54517a';;
+*)
+    bg='#2B275E'
+    fgon='#4B43AB'
+    fgoff='#353073';;
+esac
+
+percentage=`perl -e "printf('%.0f', 100 * $vol / 65536.0)"`
+tenth=`perl -e "printf('%.0f', 10 * $vol / 65536.0)"`
+
+if [ $tenth -gt 10 ]; then 
+  tenth=10
+fi
+
+on=`perl -e "print '+' x $tenth" | sed 's/+/ /g'`
+off=`perl -e "print '+' x (10 - $tenth)" | sed 's/+/ /g'`
+
+while [ `expr length "$percentage"` -lt 3 ]; do
+  percentage=" $percentage"
+done
+
+if echo list-sinks | pacmd | grep -q "muted: no"; then
+    echo "$percentage% <fc=,$fgon>$on</fc><fc=,$bg>$off</fc>"
+else
+    echo "$percentage% <fc=,$fgoff>$on</fc><fc=,$bg>$off</fc>"
+fi

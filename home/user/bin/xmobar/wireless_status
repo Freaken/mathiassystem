@@ -1,0 +1,21 @@
+#!/bin/sh
+
+connection=`iwconfig 2>/dev/null | egrep "ESSID:[^ ]*" | egrep -v -e "ESSID:off/any" -e "\\x[0-9A-F]{2}" | head -n1`
+
+if [ -z "$connection" ]; then  # Check if an essid was found
+  exit 0
+fi
+
+interface=`echo $connection | awk '{print $1}'`
+essid=`echo $connection | awk -F\" '{print $2}'`
+
+link=`iwconfig $interface | grep -o "Link Quality=[^ ]*" | awk -F= '{print $2}'`
+cur_strength=`echo $link | awk -F/ '{print $1}'`
+max_strength=`echo $link | awk -F/ '{print $2}'`
+
+good=`expr 10 "*" $cur_strength / $max_strength`
+
+good_str=`perl -e "print '+' x $good" | sed 's/+/ /g'`
+bad_str=`perl -e "print '+' x (10 - $good )" | sed 's/+/ /g'`
+
+echo $essid "<fc=,#a8f5a3>$good_str</fc><fc=,#547a51>$bad_str</fc>"

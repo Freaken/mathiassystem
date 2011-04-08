@@ -1,0 +1,13 @@
+#!/bin/sh
+
+aptstatus=`/usr/lib/update-notifier/apt-check 2>&1`
+
+normal=`echo $aptstatus | awk -F\; '{print $1}'`
+security=`echo $aptstatus | awk -F\; '{print $2}'`
+
+if [ " $security" != " 0" ]; then
+    echo "  <fc=#ff0000>[[!]]</fc>  | "
+elif [ " $normal" != " 0" ]; then
+    echo "  <fc=orange>[[!]]</fc>  | "
+fi
+
